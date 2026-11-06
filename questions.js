@@ -1,16 +1,15 @@
 // ==========================================================================
-// 📝 《大师的学生》综合练习题库 (questions.js) - 马来西亚 UASA/KSSM 本地考卷标准版
-// 甲组：客观选择题（10题，含引文框、I/II/III/IV组合题、排序题、修辞作用题）
-// 乙组：主观简答题（15分制，含 [1分]/[2分] 采分点、KBAT题及随文语文知识题）
+// 📝 《大师的学生》综合练习题库 (questions.js) - 画线词醒目下划线修复版
 // ==========================================================================
 
 const PT = (pts) => `<span style="display:inline-block; background:var(--primary-color); color:#fff; font-size:11px; font-weight:800; padding:0 5px; margin:0 3px; border-radius:4px;">[${pts}分]</span>`;
 
 const QUOTE_BOX = (text) => `<div style="margin:6px 0 10px 0; padding:8px 12px; background:var(--notebook-bg); border-left:3px solid var(--primary-color); border-radius:4px; font-weight:600; font-size:14.5px; color:var(--text-color); line-height:1.65;">${text}</div>`;
 
-// ==========================================================================
-// 甲组：现代文理解客观题（10分，每题1分）
-// ==========================================================================
+// 🔖 考卷标准“画线词语”专用下划线标记（醒目下划线 + 主色高亮）
+const HL = (text) => `<u style="text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:4px; color:var(--primary-color); font-weight:800;">${text}</u>`;
+
+// 甲组：现代文理解客观题（10分）
 const quizDataList = [
     {
         id: 1,
@@ -26,7 +25,7 @@ const quizDataList = [
     },
     {
         id: 2,
-        question: "根据第5段至第7段，指导教授在三个月里采用了哪些教学方式？<br><span style='font-weight:600; font-size:14px; display:inline-block; margin-top:6px; line-height:1.7;'>I 授课第一天给学生一份难度颇高的乐谱，叮嘱他回去练习<br>II 第二周上课时不验收旧谱，直接给他一份难度更高的新乐谱<br>III 第三周及之后持续给出两倍难度的乐谱，不断提升挑战<br>IV 每次下课前都严厉斥责学生笨拙，威胁要将他逐出师门</span>",
+        question: "根据第5段至第7段，指导教授在三个月里采用了哪些教学方式？<br><span style='font-weight:500; font-size:14px; display:inline-block; margin-top:6px; line-height:1.7;'>I 授课第一天给学生一份难度颇高的乐谱，叮嘱他回去练习<br>II 第二周上课时不验收旧谱，直接给他一份难度更高的新乐谱<br>III 第三周及之后持续给出两倍难度的乐谱，不断提升挑战<br>IV 每次下课前都严厉斥责学生笨拙，威胁要将他逐出师门</span>",
         options: [
             "A I、II 和 III",
             "B I、II 和 IV",
@@ -38,7 +37,7 @@ const quizDataList = [
     },
     {
         id: 3,
-        question: "随着课程推进，学生的心理状态发生了剧烈变化。请按事件发展的先后顺序排列（参照第5段至第10段）。<br><span style='font-weight:600; font-size:14px; display:inline-block; margin-top:6px; line-height:1.7;'>I 惊讶万分，怔怔无言 &nbsp;&nbsp;&nbsp;&nbsp; II 准备验收，面临新谱<br>III 忍无可忍，决定质疑 &nbsp;&nbsp;&nbsp;&nbsp; IV 不安沮丧，信心殆尽</span>",
+        question: "随着课程推进，学生的心理状态发生了剧烈变化。请按事件发展的先后顺序排列（参照第5段至第10段）。<br><span style='font-weight:500; font-size:14px; display:inline-block; margin-top:6px; line-height:1.7;'>I 惊讶万分，怔怔无言 &nbsp;&nbsp;&nbsp;&nbsp; II 准备验收，面临新谱<br>III 忍无可忍，决定质疑 &nbsp;&nbsp;&nbsp;&nbsp; IV 不安沮丧，信心殆尽</span>",
         options: [
             "A II → IV → III → I",
             "B II → III → IV → I",
@@ -50,7 +49,7 @@ const quizDataList = [
     },
     {
         id: 4,
-        question: `${QUOTE_BOX("一点也没有因为上周的练习而有驾轻就熟的感觉，学生感到越来越不安、沮丧和气馁。")}结合第7段语境，句中“驾轻就熟”的意思是什么？`,
+        question: `${QUOTE_BOX(`一点也没有因为上周的练习而有${HL("驾轻就熟")}的感觉，学生感到越来越不安、沮丧和气馁。`)}结合第7段语境，句中画线成语“${HL("驾轻就熟")}”的意思是什么？`,
         options: [
             "A 挑选简单轻松的曲目，逃避高难度技巧训练。",
             "B 对技艺非常熟悉，弹奏起来轻松自如且得心应手。",
@@ -134,9 +133,7 @@ const quizDataList = [
     }
 ];
 
-// ==========================================================================
 // 乙组：现代文理解简答题（15分制 + 随文语文知识训练）
-// ==========================================================================
 const essayDataList = [
     {
         id: 1,
@@ -165,10 +162,12 @@ const essayDataList = [
     {
         id: 5,
         question: `（五）<strong>【随文语文知识训练】</strong>阅读下面的句子，完成第 a 至 d 小题： <span style="color:var(--primary-color);">[附加4分]</span><br>` +
-                  `a. “他以<strong>坚定</strong>的目光望着学生。”——写出画线词语的<strong>词性</strong>。<br>` +
+                  `<div style="font-weight:500; margin-top:8px; line-height:1.9;">` +
+                  `a. “他以${HL("坚定")}的目光望着学生。”——写出画线词语的<strong>词性</strong>。<br>` +
                   `b. “在钢琴上，摆着一份全新的乐谱。”——写出句中的一个<strong>偏正短语</strong>。<br>` +
                   `c. “<strong>如果</strong>，我任由你表现最擅长的部分，可能你还在练习最早的那份乐谱，<strong>就</strong>不会有现在这样的程度……”——写出上面句子的<strong>复句类型</strong>。<br>` +
-                  `d. “感觉自己对弹奏钢琴的信心似乎跌到了谷底，消磨殆尽。”——写出上面句子所采用的<strong>修辞手法</strong>。`,
+                  `d. “感觉自己对弹奏钢琴的信心似乎跌到了谷底，消磨殆尽。”——写出上面句子所采用的<strong>修辞手法</strong>。` +
+                  `</div>`,
         sampleAnswer: `a. 词性：<strong>形容词</strong>${PT(1)}<br>` +
                       `b. 偏正短语：<strong>全新的乐谱</strong>（或：一份全新的乐谱）${PT(1)}<br>` +
                       `c. 复句类型：<strong>假设复句</strong>（标志关联词：“如果……就……”）${PT(1)}<br>` +
